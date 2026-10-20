@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 commercetools GmbH and the ct-builders contributors
+# Freely available, AS IS and UNSUPPORTED. See LICENSE.
+
+query FetchCarts($limit: Int, $offset: Int) {
+  carts(limit: $limit, offset: $offset) {
+    total
+    count
+    offset
+    results {
+      id
+      version
+      customerEmail
+      totalPrice {
+        centAmount
+        currencyCode
+      }
+      createdAt
+      lastModifiedAt
+    }
+  }
+}

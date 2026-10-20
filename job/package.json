@@ -1,0 +1,44 @@
+{
+  "name": "abandoned-cart-job",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "node build/index.js",
+    "gcp-build": "tsc",
+    "start:dev": "concurrently -k \"tsc --watch\" \"nodemon -q build/index.js\"",
+    "build": "rimraf ./build && tsc",
+    "lint": "eslint . --ext .ts",
+    "prettier": "prettier --write '**/*.{js,ts}'",
+    "test": "jest --config jest.config.cjs",
+    "test:watch": "jest --watch",
+    "typecheck": "tsc --noEmit",
+    "verify": "npm ci && npm audit --audit-level=high && npm run typecheck && npm run lint && npm run build && npm test"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@commercetools-backend/loggers": "^27.9.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.3"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.3",
+    "@types/express": "^4.17.23",
+    "@types/jest": "^29.2.1",
+    "@types/node": "^22.15.3",
+    "@types/supertest": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.46.0",
+    "jest": "^29.6.2",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.1",
+    "rimraf": "^6.0.1",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6"
+  }
+}
