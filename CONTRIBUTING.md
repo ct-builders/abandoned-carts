@@ -21,11 +21,11 @@ at a time with `./scripts/predeploy.sh mc-app`.
 repository, so a change that breaks it breaks it for the next person who
 clones.
 
-`npm audit --audit-level=high` runs first because Connect's SCA scan is what
-rejects a Connector, and its report names only the stage that failed. It also
-scans the **whole repository**, not just the applications named in
-`connect.yaml` — a stray lockfile in a folder nothing deploys fails the scan
-exactly like a real dependency.
+`npm audit` runs first because Connect's SCA scan is what rejects a
+Connector, and its report names only the stage that failed. It gates at
+**critical**, the threshold Connect enforces, and it keeps **development
+dependencies** in scope, because Connect scans those too — `--omit=dev`
+would go green here and still be rejected there.
 
 ## Two hard requirements
 
